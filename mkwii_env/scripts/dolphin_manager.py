@@ -1,12 +1,22 @@
 import os
 import sys
 
+sys.path.append("/root/mkwii_env")
 from dolphin import event, memory, controller
-from ..utils.enums import MemoryTypes, Controllers
-from ..utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+from utils.enums import MemoryTypes, Controllers
+from utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
 
 
-class Manager:
+class DolphinManager:
+    """Interface class to manage communication with the Dolphin emulator.
+
+    This class provides methods to:
+    - Retrieve and step through frame data.
+    - Access and modify emulator memory with support for different memory types.
+    - Configure actions for various controller types (GameCube, Wiimote, Wii Classic, Wii Nunchuk, and GBA).
+
+    It serves as a central point for managing simulator state and input events.
+    """
     def __init__(self):
         self.width = None
         self.height = None

@@ -5,16 +5,16 @@ import json
 import time
 
 
-# sys.path.append("/root/env/dolphin_script")
-from ..utils.actions import GCAction
-from ..utils.enums import Commands
-from ..utils.pipe_manager import PipeManager
-from manager import Manager
+sys.path.append("/root/mkwii_env")
+from utils.actions import GCAction
+from utils.enums import Commands
+from utils.pipe_manager import PipeManager
+from dolphin_manager import DolphinManager
 
 
 PIPE_PATH, DOLPHIN_ID = json.loads(sys.stdin.readline())
 pipe = PipeManager(PIPE_PATH=PIPE_PATH, DOLPHIN_ID=DOLPHIN_ID, remake=False)
-manager = Manager()
+manager = DolphinManager()
 
 red = 0xFFFF0000
 

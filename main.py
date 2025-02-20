@@ -3,7 +3,7 @@ import yaml
 import time
 
 from mkwii_env import MKWiiEnv
-from mkwii_env.dolphin_script.utils.actions import GCAction
+from mkwii_env.utils.actions import GCAction
 
 from PIL import Image
 
