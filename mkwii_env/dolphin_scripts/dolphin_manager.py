@@ -1,7 +1,8 @@
 import os
 import sys
 
-sys.path.append("/root/mkwii_env")
+
+sys.path.append(os.environ.get("MKWII_ENV_PATH", '/root/mkwii_env'))
 from dolphin import event, memory, controller
 from utils.enums import MemoryTypes, Controllers
 from utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
@@ -17,6 +18,7 @@ class DolphinManager:
 
     It serves as a central point for managing simulator state and input events.
     """
+
     def __init__(self):
         self.width = None
         self.height = None

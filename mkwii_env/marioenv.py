@@ -13,7 +13,6 @@ from .utils.pipe_manager import PipeManager
 import gym
 from gym.spaces import Box, Discrete, Tuple
 
-ENV_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class Dolphin:
     def __init__(
@@ -21,11 +20,12 @@ class Dolphin:
         DOLPHIN_PATH="/root/dolphin/build/Binaries",
         DOLPHIN_ID=0,
         ISO_PATH="/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
-        PIPE_PATH="/root/env/Pipes",
+        PIPE_PATH="/root/mkwii_env/Pipes",
     ):
         self.DOLPHIN_PATH = DOLPHIN_PATH
         self.DOLPHIN_ID = DOLPHIN_ID
-        self.SCRIPT_PATH = f"{ENV_PATH}/dolphin_script/script.py"
+        ENV_PATH = os.environ.get("MKWII_ENV_PATH", "/root/mkwii_env")
+        self.SCRIPT_PATH = os.path.join(,"/dolphin_scripts/dolphin_script.py")
         self.ISO_PATH = ISO_PATH
         self.PIPE_PATH = PIPE_PATH
 
@@ -117,7 +117,7 @@ class MKWiiEnv(gym.Env):
             "DOLPHIN_PATH": "/root/dolphin/build/Binaries",
             "DOLPHIN_ID": 0,
             "ISO_PATH": "/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
-            "PIPE_PATH": "/root/env/Pipes",
+            "PIPE_PATH": "/root/mkwii_env/Pipes",
         },
     ):
         self.dolphin = Dolphin(**dolphin_config)

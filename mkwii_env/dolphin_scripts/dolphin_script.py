@@ -5,7 +5,7 @@ import json
 import time
 
 
-sys.path.append("/root/mkwii_env")
+sys.path.append(os.environ.get("MKWII_ENV_PATH", '/root/mkwii_env'))
 from utils.actions import GCAction
 from utils.enums import Commands
 from utils.pipe_manager import PipeManager
