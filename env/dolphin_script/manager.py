@@ -1,7 +1,9 @@
+import os
 import sys
 
-sys.path.append("/root/env")
-
+ENV_PATH = os.path.dirname(os.getcwd())
+print(ENV_PATH)
+sys.path.append(ENV_PATH)
 from dolphin import event, memory, controller
 from dolphin_script.utils.enums import MemoryTypes, Controllers
 from dolphin_script.utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction

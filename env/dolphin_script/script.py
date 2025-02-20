@@ -4,7 +4,10 @@ import asyncio
 import json
 import time
 
-sys.path.append("/root/env")
+
+ENV_PATH = os.path.dirname(os.getcwd())
+print(ENV_PATH)
+sys.path.append(ENV_PATH)
 # sys.path.append("/root/env/dolphin_script")
 from dolphin_script.utils.actions import GCAction
 from dolphin_script.utils.enums import Commands
