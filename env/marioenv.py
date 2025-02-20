@@ -71,7 +71,7 @@ class Dolphin:
     ):
         """
         Args:
-            action (dict[int, GCAction] | GCAction): Action to be performed by the agent
+            action (dict[int, GCAction | WiiClassicAction | WiimoteAction | WiiNunchukAction | GBAAction] | GCAction | WiiClassicAction | WiimoteAction | WiiNunchukAction | GBAAction): The action to be performed by the emulator.
         """
         if not isinstance(action, dict):
             action = {0: action}
