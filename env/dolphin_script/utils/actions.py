@@ -171,6 +171,7 @@ class GCAction:
         """
         assert button in ["A", "B", "X", "Y", "Z", "Start", "Up", "Down", "Left", "Right", "L", "R"]
         self.__inputs[button] = True
+        return self
 
     def release_Button(self, button):
         """
@@ -181,6 +182,7 @@ class GCAction:
         """
         assert button in ["A", "B", "X", "Y", "Z", "Start", "Up", "Down", "Left", "Right", "L", "R"]
         self.__inputs[button] = False
+        return self
 
     def set_Stick(self, stick, x, y):
         """
@@ -195,6 +197,7 @@ class GCAction:
         assert -1 <= x <= 1 and -1 <= y <= 1
         self.__inputs[stick + "X"] = x
         self.__inputs[stick + "Y"] = y
+        return self
 
     def reset_Stick(self, stick):
         """
@@ -206,6 +209,7 @@ class GCAction:
         assert stick in ["Stick", "CStick"]
         self.__inputs[stick + "X"] = 0.0
         self.__inputs[stick + "Y"] = 0.0
+        return self
 
     def set_Trigger(self, trigger, value):
         """
@@ -218,6 +222,7 @@ class GCAction:
         assert trigger in ["TriggerLeft", "TriggerRight"]
         assert 0 <= value <= 1
         self.__inputs[trigger] = value
+        return self
 
     def reset_Trigger(self, trigger):
         """
@@ -228,6 +233,7 @@ class GCAction:
         """
         assert trigger in ["TriggerLeft", "TriggerRight"]
         self.__inputs[trigger] = 0.0
+        return self
 
     @property
     def A(self):
@@ -354,6 +360,7 @@ class WiimoteAction:
         """
         assert button in ["A", "B", "One", "Two", "Plus", "Minus", "Home", "Up", "Down", "Left", "Right"]
         self.__inputs[button] = True
+        return self
 
     def release_Button(self, button):
         """
@@ -364,6 +371,7 @@ class WiimoteAction:
         """
         assert button in ["A", "B", "One", "Two", "Plus", "Minus", "Home", "Up", "Down", "Left", "Right"]
         self.__inputs[button] = False
+        return self
 
     @property
     def A(self):
@@ -472,6 +480,7 @@ class WiiClassicAction:
         """
         assert button in ["A", "B", "X", "Y", "ZL", "ZR", "Plus", "Minus", "Home", "Up", "Down", "Left", "Right", "L", "R"]
         self.__inputs[button] = True
+        return self
 
     def release_Button(self, button):
         """
@@ -498,6 +507,7 @@ class WiiClassicAction:
             "R",
         ]
         self.__inputs[button] = False
+        return self
 
     def set_Stick(self, stick, x, y):
         """
@@ -512,6 +522,7 @@ class WiiClassicAction:
         assert -1 <= x <= 1 and -1 <= y <= 1
         self.__inputs[stick + "X"] = x
         self.__inputs[stick + "Y"] = y
+        return self
 
     def reset_Stick(self, stick):
         """
@@ -523,6 +534,7 @@ class WiiClassicAction:
         assert stick in ["LeftStick", "RightStick"]
         self.__inputs[stick + "X"] = 0.0
         self.__inputs[stick + "Y"] = 0.0
+        return self
 
     def set_Trigger(self, trigger, value):
         """
@@ -535,6 +547,7 @@ class WiiClassicAction:
         assert trigger in ["TriggerLeft", "TriggerRight"]
         assert 0 <= value <= 1
         self.__inputs[trigger] = value
+        return self
 
     def reset_Trigger(self, trigger):
         """
@@ -545,6 +558,7 @@ class WiiClassicAction:
         """
         assert trigger in ["TriggerLeft", "TriggerRight"]
         self.__inputs[trigger] = 0.0
+        return self
 
     @property
     def A(self):
@@ -668,19 +682,23 @@ class WiiNunchukAction:
     def press_Button(self, button):
         assert button in ["C", "Z"]
         self.__inputs[button] = True
+        return self
 
     def release_Button(self, button):
         assert button in ["C", "Z"]
         self.__inputs[button] = False
+        return self
 
     def set_Stick(self, x, y):
         assert -1 <= x <= 1 and -1 <= y <= 1
         self.__inputs["StickX"] = x
         self.__inputs["StickY"] = y
+        return self
 
     def reset_Stick(self):
         self.__inputs["StickX"] = 0.0
         self.__inputs["StickY"] = 0.0
+        return self
 
     @property
     def C(self):
@@ -742,10 +760,12 @@ class GBAAction:
     def press_Button(self, button):
         assert button in ["A", "B", "L", "R", "Start", "Select", "Up", "Down", "Left", "Right"]
         self.__inputs[button] = True
+        return self
 
     def release_Button(self, button):
         assert button in ["A", "B", "L", "R", "Start", "Select", "Up", "Down", "Left", "Right"]
         self.__inputs[button] = False
+        return self
 
     @property
     def A(self):
