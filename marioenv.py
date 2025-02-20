@@ -168,3 +168,7 @@ class MKWiiEnv(gym.Env):
     def close(self):
         self.dolphin.kill()
         super().close()
+
+    @enum.unique
+    class MacroFlags(enum.Flag):
+        NONE = 0
