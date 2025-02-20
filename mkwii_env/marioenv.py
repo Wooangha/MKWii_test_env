@@ -6,26 +6,26 @@ import json
 
 import enum
 
-from dolphin_script.utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
-from dolphin_script.utils.enums import Commands
-from dolphin_script.utils.pipe_manager import PipeManager
+from .dolphin_script.utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+from .dolphin_script.utils.enums import Commands
+from .dolphin_script.utils.pipe_manager import PipeManager
 
 import gym
 from gym.spaces import Box, Discrete, Tuple
 
+ENV_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class Dolphin:
     def __init__(
         self,
         DOLPHIN_PATH="/root/dolphin/build/Binaries",
         DOLPHIN_ID=0,
-        SCRIPT_PATH="./dolphin_script/script.py",
         ISO_PATH="/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
         PIPE_PATH="/root/env/Pipes",
     ):
         self.DOLPHIN_PATH = DOLPHIN_PATH
         self.DOLPHIN_ID = DOLPHIN_ID
-        self.SCRIPT_PATH = SCRIPT_PATH
+        self.SCRIPT_PATH = f"{ENV_PATH}/dolphin_script/script.py"
         self.ISO_PATH = ISO_PATH
         self.PIPE_PATH = PIPE_PATH
 
@@ -116,7 +116,6 @@ class MKWiiEnv(gym.Env):
         dolphin_config={
             "DOLPHIN_PATH": "/root/dolphin/build/Binaries",
             "DOLPHIN_ID": 0,
-            "SCRIPT_PATH": "./dolphin_script/script.py",
             "ISO_PATH": "/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
             "PIPE_PATH": "/root/env/Pipes",
         },

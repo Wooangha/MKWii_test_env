@@ -2,8 +2,8 @@ import os
 import yaml
 import time
 
-from marioenv import MKWiiEnv
-from dolphin_script.utils.actions import GCAction
+from mkwii_env import MKWiiEnv
+from mkwii_env.dolphin_script.utils.actions import GCAction
 
 from PIL import Image
 
@@ -18,7 +18,6 @@ if __name__ == "__main__":
             dolphin_config={
                 "DOLPHIN_PATH": config["DOLPHIN_PATH"],
                 "DOLPHIN_ID": config["DOLPHIN_IDS"][0],
-                "SCRIPT_PATH": "./dolphin_script/script.py",
                 "ISO_PATH": config["ISO_PATH"],
                 "PIPE_PATH": config["PIPE_PATH"],
             }
