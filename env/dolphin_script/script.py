@@ -36,6 +36,9 @@ while True:
         case Commands.GET_STATE:
             # manager.get_state()  # TODO: Not Implemented get_state
             pipe.send_data(None)
+        case Commands.SET_WIIMOTE_POINTER:
+            controller_id, x, y = pipe.get_data()
+            manager.set_wiimote_pointer(controller_id, x, y)
         case Commands.END:
             break
     # print(f"Step: {steps}")

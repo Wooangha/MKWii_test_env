@@ -6,30 +6,22 @@ class Commands(enum.Enum):
     DO_ACTION = 0
     GET_FRAME = 1
     GET_STATE = 2
-    END = 3
+    SET_WIIMOTE_POINTER = 3
+    END = 4
 
 
 @enum.unique
 class MemoryTypes(enum.Enum):
     """
-    u8: 1 byte unsigned integer
-
-    u16: 2 byte unsigned integer
-
-    u32: 4 byte unsigned integer
-
-    u64: 8 byte unsigned integer
-
-    s8: 1 byte signed integer
-
-    s16: 2 byte signed integer
-
-    s32: 4 byte signed integer
-
-    s64: 8 byte signed integer
-
-    f32: 4 byte float
-
+    u8: 1 byte unsigned integer\n
+    u16: 2 byte unsigned integer\n
+    u32: 4 byte unsigned integer\n
+    u64: 8 byte unsigned integer\n
+    s8: 1 byte signed integer\n
+    s16: 2 byte signed integer\n
+    s32: 4 byte signed integer\n
+    s64: 8 byte signed integer\n
+    f32: 4 byte float\n
     f64: 8 byte float
     """
 
