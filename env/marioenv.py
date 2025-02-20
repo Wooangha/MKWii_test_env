@@ -4,7 +4,9 @@ import subprocess
 import pickle
 import json
 
-from dolphin_script.utils.actions import GCAction
+import enum
+
+from dolphin_script.utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
 from dolphin_script.utils.enums import Commands
 from dolphin_script.utils.pipe_manager import PipeManager
 
@@ -56,7 +58,17 @@ class Dolphin:
             os.remove(path)
             os.mkfifo(path)
 
-    def step(self, action: dict[int, GCAction] | GCAction):
+    def step(
+        self,
+        action: (
+            dict[int, GCAction | WiiClassicAction | WiimoteAction | WiiNunchukAction | GBAAction]
+            | GCAction
+            | WiiClassicAction
+            | WiimoteAction
+            | WiiNunchukAction
+            | GBAAction
+        ),
+    ):
         """
         Args:
             action (dict[int, GCAction] | GCAction): Action to be performed by the agent
@@ -110,7 +122,21 @@ class MKWiiEnv(gym.Env):
             ]
         )
 
-    def step(self, action):
+    def step(
+        self,
+        action: (
+            dict[int, GCAction | WiiClassicAction | WiimoteAction | WiiNunchukAction | GBAAction]
+            | GCAction
+            | WiiClassicAction
+            | WiimoteAction
+            | WiiNunchukAction
+            | GBAAction
+        ) = GCAction(),
+    ):
+        """
+        Args:
+            action (GCAction | WiiClassicAction | WiimoteAction | WiiNunchukAction | GBAAction, optional): The action to be performed by the emulator. Defaults to GCAction().
+        """
         return self.dolphin.step(action), 0, False, {}
 
     def get_obs(self):
