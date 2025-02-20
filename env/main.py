@@ -1,20 +1,26 @@
+import os
+import yaml
 import time
-from marioenv import MKWiiEnv
 
+from marioenv import MKWiiEnv
 from dolphin_script.utils.actions import GCAction
+
 from PIL import Image
 
 if __name__ == "__main__":
     try:
+        config = yaml.safe_load(open("dolphin_config.yaml", "r"))
+        os.environ["ENV_PATH"] = config["ENV_PATH"]
+
         action = GCAction()
         action.press_Button("A")
         env = MKWiiEnv(
             dolphin_config={
-                "DOLPHIN_PATH": "/root/dolphin/build/Binaries",
-                "DOLPHIN_ID": 0,
+                "DOLPHIN_PATH": config["DOLPHIN_PATH"],
+                "DOLPHIN_ID": config["DOLPHIN_ID"][0],
                 "SCRIPT_PATH": "./dolphin_script/script.py",
-                "ISO_PATH": "/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
-                "PIPE_PATH": "/root/env/p",
+                "ISO_PATH": config["ISO_PATH"],
+                "PIPE_PATH": config["PIPE_PATH"],
             }
         )
         print("Connected to Dolphin")

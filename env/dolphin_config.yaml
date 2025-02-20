@@ -1,0 +1,11 @@
+
+ENV_PATH: /root/env # Path to this directory
+ISO_PATH: /root/Mario Kart Wii (USA) (En,Fr,Es).wbfs
+DOLPHIN_PATH: /root/dolphin/build/Binaries
+PIPE_PATH: /root/env/Pipes
+
+DOLPHIN_IDS:
+  - 0
+  # - 1
+  # - 2
+  # - abcd...
