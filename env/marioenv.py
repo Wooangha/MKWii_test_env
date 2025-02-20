@@ -139,6 +139,9 @@ class MKWiiEnv(gym.Env):
         """
         return self.dolphin.step(action), 0, False, {}
 
+    def set_wiimote_pointer(self, controller_id: int, x: float, y: float):
+        self.dolphin.set_wiimote_pointer(controller_id, x, y)
+
     def get_obs(self):
         return (self.dolphin.get_frame(), self.dolphin.get_state())
 
