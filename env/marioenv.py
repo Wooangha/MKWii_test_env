@@ -100,6 +100,10 @@ class Dolphin:
     def disconnect_pipe(self):
         self.pipes.send_command(Commands.END)
 
+    def reset(self):
+        self.kill()
+        self.connect()
+
     def kill(self):
         if self.dolphin.poll() is None:
             os.killpg(os.getpgid(self.dolphin.pid), signal.SIGKILL)
