@@ -81,7 +81,11 @@ class Dolphin:
 
         return state
 
-    def get_frame(self):
+    def set_wiimote_pointer(self, controller_id: int, x: float, y: float):
+        self.pipes.send_command(Commands.SET_WIIMOTE_POINTER)
+        self.pipes.send_data((controller_id, x, y))
+
+    def get_frame(self) -> tuple[int, int, bytes]:
         self.pipes.send_command(Commands.GET_FRAME)
         (width, height, data) = self.pipes.get_data()
 
