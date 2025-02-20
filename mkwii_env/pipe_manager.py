@@ -3,8 +3,8 @@ import pickle
 import time
 import sys
 
-from .enums import Commands, Controllers, MemoryTypes
-from .actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+from .mkwii_package.mkwii_env.enums import Commands, Controllers, MemoryTypes
+from .mkwii_package.mkwii_env.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
 
 class PipeManager:
     def __init__(self, PIPE_PATH="/home/username/mario/Pipes", DOLPHIN_ID=0, remake=True):

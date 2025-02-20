@@ -1,11 +1,10 @@
 import os
 import sys
 
-
-sys.path.append(os.environ.get("MKWII_ENV_PATH", '/root/mkwii_env'))
 from dolphin import event, memory, controller
-from utils.enums import MemoryTypes, Controllers
-from utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+
+from mario.MKWii_test_env.mkwii_env.enums import MemoryTypes, Controllers
+from mario.MKWii_test_env.mkwii_env.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
 
 
 class DolphinManager:

@@ -5,11 +5,11 @@ import json
 import time
 
 
-sys.path.append(os.environ.get("MKWII_ENV_PATH", '/root/mkwii_env'))
-from utils.actions import GCAction
-from utils.enums import Commands
-from utils.pipe_manager import PipeManager
-from dolphin_manager import DolphinManager
+sys.path.append(os.environ.get("MKWII_ENV_PATH", "/root/mkwii_env"))
+from actions import GCAction
+from enums import Commands
+from pipe_manager import PipeManager
+from mkwii_scripts.dolphin_manager import DolphinManager
 
 
 PIPE_PATH, DOLPHIN_ID = json.loads(sys.stdin.readline())

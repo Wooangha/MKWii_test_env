@@ -5,10 +5,11 @@ import pickle
 import json
 
 import enum
+import sys
 
-from .utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
-from .utils.enums import Commands
-from .utils.pipe_manager import PipeManager
+from actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+from enums import Commands
+from pipe_manager import PipeManager
 
 import gym
 from gym.spaces import Box, Discrete, Tuple
@@ -19,13 +20,13 @@ class Dolphin:
         self,
         DOLPHIN_PATH="/root/dolphin/build/Binaries",
         DOLPHIN_ID=0,
+        SCRIPT_PATH="/root/mkwii_env/dolphin_scripts/dolphin_script.py",
         ISO_PATH="/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
         PIPE_PATH="/root/mkwii_env/Pipes",
     ):
         self.DOLPHIN_PATH = DOLPHIN_PATH
         self.DOLPHIN_ID = DOLPHIN_ID
-        ENV_PATH = os.environ.get("MKWII_ENV_PATH", "/root/mkwii_env")
-        self.SCRIPT_PATH = os.path.join(,"/dolphin_scripts/dolphin_script.py")
+        self.SCRIPT_PATH = SCRIPT_PATH,
         self.ISO_PATH = ISO_PATH
         self.PIPE_PATH = PIPE_PATH
 
@@ -75,6 +76,8 @@ class Dolphin:
         """
         if not isinstance(action, dict):
             action = {0: action}
+        for controller_id, action in action.items():
+            action.__module__ = "actions"
         self.pipes.send_command(Commands.DO_ACTION)
         self.pipes.send_data(action)
         state = self.pipes.get_data()
@@ -116,6 +119,7 @@ class MKWiiEnv(gym.Env):
         dolphin_config={
             "DOLPHIN_PATH": "/root/dolphin/build/Binaries",
             "DOLPHIN_ID": 0,
+            "SCRIPT_PATH": "/root/mkwii_env/dolphin_scripts/dolphin_script.py",
             "ISO_PATH": "/root/Mario Kart Wii (USA) (En,Fr,Es).wbfs",
             "PIPE_PATH": "/root/mkwii_env/Pipes",
         },

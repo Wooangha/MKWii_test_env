@@ -1,16 +1,18 @@
 import os
 import yaml
 import time
+import sys
 
+sys.path.append(os.environ.get("MKWII_ENV_PATH", "/root/mkwii_env"))
 from mkwii_env import MKWiiEnv
-from mkwii_env.utils.actions import GCAction
+from mkwii_env.actions import GCAction
+
 
 from PIL import Image
 
 if __name__ == "__main__":
     try:
         config = yaml.safe_load(open("dolphin_config.yaml", "r"))
-        os.environ["ENV_PATH"] = config["ENV_PATH"]
 
         action = GCAction()
         action.press_Button("A")
