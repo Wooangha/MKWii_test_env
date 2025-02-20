@@ -5,14 +5,11 @@ import json
 import time
 
 
-ENV_PATH = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(ENV_PATH)
-sys.path.append(ENV_PATH)
 # sys.path.append("/root/env/dolphin_script")
-from dolphin_script.utils.actions import GCAction
-from dolphin_script.utils.enums import Commands
-from dolphin_script.utils.pipe_manager import PipeManager
-from dolphin_script.manager import Manager
+from ..utils.actions import GCAction
+from ..utils.enums import Commands
+from ..utils.pipe_manager import PipeManager
+from manager import Manager
 
 
 PIPE_PATH, DOLPHIN_ID = json.loads(sys.stdin.readline())

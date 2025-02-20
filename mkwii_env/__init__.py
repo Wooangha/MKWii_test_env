@@ -1,2 +1,1 @@
-from marioenv import MKWiiEnv
-import dolphin_script.utils
+from .marioenv import MKWiiEnv

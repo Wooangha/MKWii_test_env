@@ -6,9 +6,9 @@ import json
 
 import enum
 
-from .dolphin_script.utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
-from .dolphin_script.utils.enums import Commands
-from .dolphin_script.utils.pipe_manager import PipeManager
+from .utils.actions import GCAction, WiiClassicAction, WiimoteAction, WiiNunchukAction, GBAAction
+from .utils.enums import Commands
+from .utils.pipe_manager import PipeManager
 
 import gym
 from gym.spaces import Box, Discrete, Tuple
