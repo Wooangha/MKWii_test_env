@@ -17,7 +17,7 @@ if __name__ == "__main__":
         env = MKWiiEnv(
             dolphin_config={
                 "DOLPHIN_PATH": config["DOLPHIN_PATH"],
-                "DOLPHIN_ID": config["DOLPHIN_ID"][0],
+                "DOLPHIN_ID": config["DOLPHIN_IDS"][0],
                 "SCRIPT_PATH": "./dolphin_script/script.py",
                 "ISO_PATH": config["ISO_PATH"],
                 "PIPE_PATH": config["PIPE_PATH"],
