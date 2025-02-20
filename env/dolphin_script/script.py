@@ -5,7 +5,7 @@ import json
 import time
 
 
-ENV_PATH = os.path.dirname(os.getcwd())
+ENV_PATH = os.getcwd()
 print(ENV_PATH)
 sys.path.append(ENV_PATH)
 # sys.path.append("/root/env/dolphin_script")

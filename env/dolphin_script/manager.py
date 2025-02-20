@@ -1,7 +1,7 @@
 import os
 import sys
 
-ENV_PATH = os.path.dirname(os.getcwd())
+ENV_PATH = os.getcwd()
 print(ENV_PATH)
 sys.path.append(ENV_PATH)
 from dolphin import event, memory, controller
