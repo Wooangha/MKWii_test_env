@@ -13,13 +13,11 @@ class PipeManager:
 
         self.MAIN_PIPE = os.path.join(PIPE_PATH, f"{DOLPHIN_ID}/main_pipe")
         self.COMMAND_PIPE = os.path.join(PIPE_PATH, f"{DOLPHIN_ID}/command_pipe")
-        self.WAITING_PIPE = os.path.join(PIPE_PATH, f"{DOLPHIN_ID}/waiting_pipe")
 
         self.remake = remake
 
         self.mkfifo(self.MAIN_PIPE)
         self.mkfifo(self.COMMAND_PIPE)
-        self.mkfifo(self.WAITING_PIPE)
 
     def mkfifo(self, path):
         if not os.path.exists(os.path.dirname(path)):
@@ -36,7 +34,7 @@ class PipeManager:
         with open(self.COMMAND_PIPE, "wb") as command_pipe:
             pickle.dump(command, command_pipe)
             command_pipe.flush()
-        time.sleep(0.0001)
+        time.sleep(0.00001)
         # open(self.WAITING_PIPE, "rb").close()
 
     def get_command(self) -> Commands:
@@ -49,7 +47,7 @@ class PipeManager:
         with open(self.MAIN_PIPE, "wb") as main_pipe:
             pickle.dump(data, main_pipe)
             main_pipe.flush()
-        time.sleep(0.0001)
+        time.sleep(0.00001)
         # open(self.WAITING_PIPE, "rb").close()
 
     def get_data(self):
